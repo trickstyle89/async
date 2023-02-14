@@ -1,6 +1,24 @@
-const messages =['4311o', 'th3r3', 'w0r1d'];
+const sentence = "hello there from lighthouse labs";
 
-for (let i = 0; i < messages.length; i++) {
-  setTimeout(() => { 
-    console.log(messages[i]);}, i * 1000);
-}
+let currentWordIndex = 0;
+let currentCharIndex = 0;
+let intervalTime;
+
+const printMessage = () => {
+  const message = sentence[currentWordIndex];
+  process.stdout.write(message[currentCharIndex]);
+
+  currentCharIndex++;
+
+  if (currentCharIndex === message.length) {
+    currentWordIndex++;
+    currentCharIndex = 0;
+  }
+
+  if (currentWordIndex === sentence.length) {
+    clearInterval(intervalTime);
+    console.log('\n');
+  }
+};
+
+intervalTime = setInterval(printMessage, 50);
