@@ -1,22 +1,31 @@
-> node fetcher.js http://www.example.edu/ ./index.html
-Downloaded and saved 3261 bytes to ./index.html
 
-const net = require('net');
-const conn = net.createConnection({ 
-  host: 'example.edu',
-  port: 80
-});
-conn.setEncoding('UTF8');
+// 'net' is for the TCP protocol that 
+// const net = require('net'); TCP
 
-conn.on('connect', () => {
-  console.log(`Connected to server!`);
+//FILE SYSTEM from Node.JS
+const fs = require('fs');
 
-  conn.write(`GET / HTTP/1.1\r\n`);
-  conn.write(`Host: example.edu\r\n`);
-  conn.write(`\r\n`);
-});
+//HTTP Protocol
+const http = require('http');
 
-conn.on('data', (data) => {
-  console.log(data);
-  conn.end();
+const url = 'http://www.example.edu/';
+const filename = './index.html';
+
+// creating a writable stream to the file you want to save 
+const file = fs.createWriteStream(filename);
+
+// HTTP GET request 
+http.get(url, (response) => {
+  console.log(`Downloading ${url} to ${filename}`);
+// piping response stream
+  response.pipe(file);
+
+
+// log a message when the file has finished downloading
+  file.on('finish', () => {
+    console.log(`Downloaded and saved ${file.bytesWritten} bytes to ${filename}`);
+    file.close();
+  });
+}).on('error', (error) => {
+  console.error(error);
 });
