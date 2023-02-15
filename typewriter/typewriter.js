@@ -1,9 +1,27 @@
 const sentence = "hello there from lighthouse labs";
 
-for (const char of sentence) {
-  setInterval(() => {
-    process.stdout.write(char);
-  }, 50 + 50);
-}
+let currentLetterIndex = 0;
+let currentCharIndex = 0;
+let intervalTime;
 
-//process.stdout.write
+
+const printMessage = () => {
+  const letter = sentence[currentLetterIndex];
+  process.stdout.write(letter[currentCharIndex]);
+
+  currentCharIndex++;
+
+  // checks to see if the letter is finished interating.
+  if (currentCharIndex === letter.length) {
+    currentLetterIndex++;
+    currentCharIndex = 0;
+  }
+
+    // checks to see if the whole sentence is finished interating.
+  if (currentLetterIndex === sentence.length) {
+    clearInterval(intervalTime);
+    console.log('\n');
+  }
+};
+//callback putting the entire function into setInterval;
+intervalTime = setInterval(printMessage, 50);
