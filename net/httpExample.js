@@ -12,3 +12,8 @@ conn.on('connect', () => {
   conn.write(`Host: example.edu\r\n`);
   conn.write(`\r\n`);
 });
+
+conn.on('data', (data) => {
+  console.log(data);
+  conn.end();
+});
