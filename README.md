@@ -1,1 +1,0 @@
-This is a test file that was used as part of the stretch exercise to understand how to create how ro create a server that can prompt the user to see if they want to download a small README.md file.
