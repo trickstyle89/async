@@ -66,7 +66,7 @@ const downloadFile = function(path, filename) {
       reject(error);
     });
   });
-}
+};
 
 // usage example:
 downloadFile(path, filename).then((filename) => {

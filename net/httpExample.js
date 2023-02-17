@@ -1,5 +1,5 @@
 const net = require('net');
-const conn = net.createConnection({ 
+const conn = net.createConnection({
   host: 'example.edu',
   port: 80
 });

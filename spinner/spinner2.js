@@ -3,7 +3,7 @@ const animationSequences = [  '\r|   ',  '\r/   ',  '\r-   ',  '\r\\   ',  '\r| 
 let iterationCount = 0; // Keep track of the number of iterations
 
 const intervalId = setInterval(() => {
-    // the modulus operator is used to keep animation running by ensuring the index limit count.
+  // the modulus operator is used to keep animation running by ensuring the index limit count.
   const sequence = animationSequences[iterationCount % animationSequences.length];
   process.stdout.write(sequence);
 

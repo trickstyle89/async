@@ -10,7 +10,7 @@ const breedDetailsFromFile = function(breed, functionToRunWhenThingsAreDone) {
   });
 };
 const printOutCatBreed = breed => {
-  console.log('Return Value: ', breed) // => print out details correctly.
+  console.log('Return Value: ', breed); // => print out details correctly.
 };
 
 // we try to get the return value

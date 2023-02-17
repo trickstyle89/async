@@ -17,7 +17,7 @@ const printMessage = () => {
     currentCharIndex = 0;
   }
 
-    // checks to see if the whole sentence is finished interating.
+  // checks to see if the whole sentence is finished interating.
   if (currentLetterIndex === sentence.length) {
     clearInterval(intervalTime);
     console.log('\n');
